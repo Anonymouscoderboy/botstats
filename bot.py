@@ -65,7 +65,7 @@ async def BotzHub():
             edit_text +=f"\n**Last Checked:** \n`{t} - {day} {month} {year} [IST]`\n\n__Bots status are auto-updated every 2 Minutes__"
             await user_bot.edit_message(int(chnl_id), msg_id, edit_text)
             print(f"Checks since last restart - {c}")
-            print("Sleeping for 2 hours.")
-            await asyncio.sleep(2 * 1 * 1)
+            print("Sleeping for 2 Minutes.")
+            await asyncio.sleep(2 * 2 * 2)
 
 user_bot.loop.run_until_complete(BotzHub())
