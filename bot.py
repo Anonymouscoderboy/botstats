@@ -30,9 +30,9 @@ async def BotzHub():
     async with user_bot:
         while True:
             print("[INFO] starting to check uptime..")
-            await user_bot.edit_message(int(chnl_id), msg_id, "**𝙊𝙘𝙩𝙖𝙫𝙚 𝙎𝙩𝙖𝙩𝙨.**\n\n`Performing a periodic check...`")
+            await user_bot.edit_message(int(chnl_id), msg_id, "**🏷 Welcome to 𝙊𝙘𝙩𝙖𝙫𝙚 Bot's Status Channel.**\n\n`Performing a periodic check...`")
             c = 0
-            edit_text = "**𝙊𝙘𝙩𝙖𝙫𝙚 𝙎𝙩𝙖𝙩𝙨.**\n\n"
+            edit_text = "**🚀 This is live status of all 𝙊𝙘𝙩𝙖𝙫𝙚 Bots. This Message keeps on updating in every 10 mins with live status of all 𝙊𝙘𝙩𝙖𝙫𝙚 Bots whether they are live or offline.**\n\n"
             for bot in bots:
                 print(f"[INFO] checking @{bot}")
                 snt = await user_bot.send_message(bot, "/start")
