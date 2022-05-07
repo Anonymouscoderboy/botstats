@@ -15,8 +15,3 @@ Fill these in a `.env` file, if hosting on a VPS.
 
 [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/Anonymouscoderboy/botstats)
 
-# Credits
-
-- [odysseusmax](https://github.com/odysseusmax/bug-free-broccoli)
-- [Telethon](https://github.com/LonamiWebs/Telethon)
-- [Me](https://xditya.me)
