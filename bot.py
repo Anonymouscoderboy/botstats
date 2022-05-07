@@ -29,26 +29,31 @@ except Exception as e:
 async def BotzHub():
     async with user_bot:
         while True:
-            print("Checking...")
-                xxx_teletips = f"📈 | **Real-Time Bot Status**"
-                for bot in BOT_LIST:
-                    try:
-                        yyy_teletips = await app.send_message(bot, "/start")
-                        aaa = yyy_teletips.id
-                        await asyncio.sleep(10)
-                        zzz_teletips = app.get_chat_history(bot, limit = 1)
-                        async for ccc in zzz_teletips:
-                            bbb = ccc.id
-                        if aaa == bbb:
-                            xxx_teletips += f"\n\n🤖  @{bot}\n        └ **Down** ❌"
-                            for bot_admin_id in BOT_ADMIN_IDS:
-                                try:
-                                    await app.send_message(int(bot_admin_id), f"🚨 **Beep! Beep!! @{bot} is down** ❌")
-                                except Exception:
-                                    pass
-                            await app.read_chat_history(bot)
-                        else:
-                            xxx_teletips += f"\n\n🤖  @{bot}\n        └ **Alive** ✅"
+            print("[INFO] starting to check uptime..")
+            await user_bot.edit_message(int(chnl_id), msg_id, "**@BotzHub Bots Stats.**\n\n`Performing a periodic check...`")
+            c = 0
+            edit_text = "**@BotzHub Bots Stats.**\n\n"
+            for bot in bots:
+                print(f"[INFO] checking @{bot}")
+                snt = await user_bot.send_message(bot, "/start")
+                await asyncio.sleep(10)
+
+                history = await user_bot(GetHistoryRequest(
+                    peer=bot,
+                    offset_id=0,
+                    offset_date=None,
+                    add_offset=0,
+                    limit=1,
+                    max_id=0,
+                    min_id=0,
+                    hash=0
+                ))
+                msg = history.messages[0].id
+                if snt.id == msg:
+                    print(f"@{bot} is down.")
+                    edit_text += f"\n\n🤖  @{bot}\n        └ **Down** ❌"
+                elif snt.id + 1 == msg:
+                    edit_text += f"\n\n🤖  @{bot}\n        └ **Alive** ✅"
                 await user_bot.send_read_acknowledge(bot)
                 c += 1
                 await user_bot.edit_message(int(chnl_id), msg_id, edit_text)
